@@ -1,0 +1,10 @@
+type Order {
+  
+}
+
+type Query {
+  getOrders: JSON
+    @rest(
+      endpoint: "https://deliveryapp23-a595f-default-rtdb.firebaseio.com/orders.json"
+    )
+}

@@ -9,7 +9,7 @@ type CustomerList {
 }
 
 type Query {
-  getCustomersById(id: ID!): Customer
+  getCustomerById(id: ID!): Customer
     @rest(
       endpoint: "https://deliveryapp23-a595f-default-rtdb.firebaseio.com/customers/$id.json"
     )

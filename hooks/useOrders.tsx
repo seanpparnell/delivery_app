@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client';
 import { GET_ORDERS } from '../graphql/queries';
 
-const useCustomerOrders = (userId: string) => {
-  const {loading, error, data} = useQuery(GET_ORDERS);
+
+const useOrders = () => {
+  const { loading, error, data } = useQuery(GET_ORDERS);
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
@@ -19,11 +20,10 @@ const useCustomerOrders = (userId: string) => {
       Lat: value.Lat,
       Lng: value.Lng,
     }));
-    const customerOrders = orders.filter((order) => order.trackingItems.customer_id === userId);
-    setOrders(customerOrders)
-  }, [data, userId]);
-  
+    setOrders(orders);
+  }, [data])
+
   return { loading, error, data };
 }
 
-export default useCustomerOrders
+export default useOrders;
